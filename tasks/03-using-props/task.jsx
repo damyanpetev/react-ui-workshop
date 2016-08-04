@@ -22,10 +22,33 @@ const Bio = React.createClass({
     age: PropTypes.number,
     interests: PropTypes.array
   },
+  
+  renderInterests () {
+      const { interests } = this.props;
+      return (
+        
+            interests.map(function(interest, i) {
+                return <li key={i}>{interest}</li>
+            })
+        
+      )
+  },
 
   render() {
+      const {name, age, interests } = this.props;
     return (
-      <div></div>
+      <div>
+        <h1>{name}</h1>
+        <h2>{age}</h2>
+        <ul>
+            <li>{interests[0]}</li>
+            <li>{interests[1]}</li>
+            <li>{interests[2]}</li>	
+        </ul>
+        <ul>
+        {this.renderInterests()}
+        </ul>
+      </div>
     )
   }
 })

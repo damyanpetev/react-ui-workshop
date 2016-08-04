@@ -20,11 +20,12 @@ import './buttons.css'
 
 const Button = React.createClass({
   propTypes: {
-
+      children: PropTypes.string,
+      className: PropTypes.string
   },
 
   render() {
-
+       return <button className="component-button">{this.props.children}</button>
   }
 })
 
@@ -33,11 +34,11 @@ const Button = React.createClass({
 function App() {
   return (
     <div>
-      <button className="rounded">Close</button>
-      <button className="horrible">Submit</button>
-      <button className="aaargh">What Is This?</button>
-      <button className="checkout">Checkout Now</button>
-      <button className="order">Order Now</button>
+      <Button>Close</Button>
+      <Button>Submit</Button>
+      <Button>What Is This?</Button>
+      <Button>Checkout Now</Button>
+      <Button>Order Now</Button>
     </div>
   )
 }

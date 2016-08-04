@@ -20,16 +20,30 @@ import 'mocha!./tests'
 import './alerts.css'
 
 const Alert = React.createClass({
-  propTypes: {},
+  propTypes: {
+      title: PropTypes.string,
+      success: PropTypes.bool,
+      error: PropTypes.bool,
+      warning: PropTypes.bool,
+      large: PropTypes.bool,
+      small: PropTypes.bool
+  },
 
   render() {
+    const { success, error, warning, large, small } = this.props;
     const classes = classNames({
-      'component-alert': true
+      'component-alert': true,
+      success,
+      error,
+      warning,
+      large,
+      small
     })
 
     return (
       <div className={classes}>
-
+        <h4>{this.props.title}</h4>
+        {this.props.children}
       </div>
     )
   },

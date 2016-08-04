@@ -22,7 +22,18 @@ import 'mocha!./tests'
 
 // application component
 function App() {
-
+	return (
+		<div>
+			<h1> "Hello World" </h1>
+			<h2> "Hello World" </h2>
+			<p>some text</p>
+<ul>
+	<li>ufhef</li>
+	<li>ufhef</li>
+	<li>ufhef</li>	
+</ul>
+		</div>
+	)	
 }
 
 // render the application

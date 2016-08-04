@@ -19,11 +19,16 @@ import './buttons.css'
 
 const Button = React.createClass({
   propTypes: {
-
+      children: PropTypes.string,
+      href: PropTypes.string
   },
 
   render() {
-
+      if (this.props.href) {
+          return <a className="component-button" {...this.props} />
+      } else {
+          return <button className="component-button">{this.props.children}</button>
+      }
   },
 })
 
@@ -31,10 +36,10 @@ const Button = React.createClass({
 function App() {
   return (
     <div>
-      <button>Close</button>
-      <input type="submit" value="Submit" />
-      <button className="checkout">Checkout Now</button>
-      <a href="#back">Take me back!</a>
+      <Button>Close</Button>
+      <Button type="submit" value="Submit"> </Button>
+      <Button className="checkout">Checkout Now</Button>
+      <Button href="#back">Take me back!</Button>
     </div>
   )
 }

@@ -28,21 +28,33 @@ import 'mocha!./tests'
 import './components.css'
 
 const IconList = React.createClass({
-
+  propTypes: {
+      children: PropTypes.arrayOf(PropTypes.instanceOf(IconListItem))
+  },
   render() {
     return (
-      <ul />
+      <ul className="component-icon-list">
+            {this.props.children}
+      </ul>
     )
   }
 
 })
 
 const IconListItem = React.createClass({
-
+  propTypes: {
+      icon: PropTypes.oneOf(["tick", "cross"]),
+      children: PropTypes.string
+  },
   render() {
+    const val = this.props.icon,
+    classes = classNames(
+      "icon",
+      val
+    )
     return (
-      <li>
-        <i/>
+      <li className="component-icon-list-item">
+        <i className={classes}/> {this.props.children}
       </li>
     )
   }

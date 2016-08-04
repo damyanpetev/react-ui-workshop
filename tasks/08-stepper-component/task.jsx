@@ -25,19 +25,39 @@ import 'mocha!./tests'
 import './stepper.css'
 
 const Stepper = React.createClass({
-
+  propTypes: {
+    increment: PropTypes.number  
+  },
+  getDefaultProps: function() {
+    return {
+      min: -10,
+      max: 10
+    };
+  },
   getInitialState() {
     return {
       value: 0
     }
   },
+  
+  increase () {
+       if (this.state.value + 1 <= this.props.max) {
+        this.setState({ value : ++this.state.value });  
+       }
+  },
+  
+  decrease  () {
+      if (this.state.value - 1 >= this.props.min) {
+        this.setState({ value : --this.state.value }); 
+      } 
+  },
 
   render() {
     return (
       <div className="component-stepper">
-        <button>-</button>
-        <input readOnly />
-        <button>+</button>
+        <button onClick={this.decrease}>-</button>
+        <input readOnly value={this.state.value}/>
+        <button onClick={this.increase}>+</button>
       </div>
     )
   }
